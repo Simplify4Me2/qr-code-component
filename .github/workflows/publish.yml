@@ -32,11 +32,12 @@ jobs:
 
       - name: Build with Next.js 🏗️
         run: npx next build
+        working-directory: ./my-qr-code-component
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./my-qr-code-component/out
 
   deploy:
     environment:
