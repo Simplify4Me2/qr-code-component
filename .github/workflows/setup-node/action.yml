@@ -13,11 +13,14 @@ runs:
       id: cache_dependencies
       uses: actions/cache@v3
       with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('my-qr-code-component/package-lock.json') }}
+        path: |
+          ./my-qr-code-component/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
 
     - name: Install dependencies 🔧
       shell: bash
       if: steps.cache_dependencies.outputs.cache-hit != 'true'
-      run: npm ci
+      run: yarn install
       working-directory: ./my-qr-code-component
