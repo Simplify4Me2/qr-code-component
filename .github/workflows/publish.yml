@@ -25,29 +25,33 @@ jobs:
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
-      - name: Setup Pages ⚙️
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: next
+      # - name: Setup Pages ⚙️
+      #   uses: actions/configure-pages@v4
+      #   with:
+      #     static_site_generator: next
 
-      - name: Build with Next.js 🏗️
-        run: npx next build
+      # - name: Build with Next.js 🏗️
+      #   run: npx next build
+      #   working-directory: ./my-qr-code-component
+
+      - name: Build 🏗️
+        run: yarn deploy
         working-directory: ./my-qr-code-component
 
-      - name: Upload artifact 📡
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./my-qr-code-component/out
+      # - name: Upload artifact 📡
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./my-qr-code-component/out
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # deploy:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-    needs: build
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - name: Publish to GitHub Pages 🚀
-        id: deployment
-        uses: actions/deploy-pages@v4
+  #   steps:
+  #     - name: Publish to GitHub Pages 🚀
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
