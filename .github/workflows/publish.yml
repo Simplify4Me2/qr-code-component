@@ -36,7 +36,7 @@ jobs:
 
       - name: Build 🏗️
         run: yarn deploy
-        working-directory: ./my-qr-code-component
+        # working-directory: ./my-qr-code-component
 
       # - name: Upload artifact 📡
       #   uses: actions/upload-pages-artifact@v3
